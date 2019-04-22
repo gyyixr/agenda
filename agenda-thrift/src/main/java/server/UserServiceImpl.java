@@ -1,9 +1,9 @@
 package server;
 
+import generated.DataException;
+import generated.User;
+import generated.UserService;
 import org.apache.thrift.TException;
-import thrift.generated.DataException;
-import thrift.generated.User;
-import thrift.generated.UserService;
 
 import java.util.ArrayList;
 import java.util.List;

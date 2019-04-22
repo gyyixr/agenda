@@ -1,12 +1,12 @@
 package server;
 
+import generated.UserService;
 import org.apache.thrift.TProcessorFactory;
 import org.apache.thrift.protocol.TCompactProtocol;
 import org.apache.thrift.server.THsHaServer;
 import org.apache.thrift.server.TServer;
 import org.apache.thrift.transport.TFramedTransport;
 import org.apache.thrift.transport.TNonblockingServerSocket;
-import thrift.generated.UserService;
 
 public class ThriftServer {
     public static void main(String[] args) throws Exception{

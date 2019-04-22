@@ -1,13 +1,12 @@
 package client;
 
+import generated.UserService;
 import org.apache.thrift.TException;
 import org.apache.thrift.protocol.TCompactProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TFastFramedTransport;
 import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
-import thrift.generated.User;
-import thrift.generated.UserService;
 
 import java.util.Scanner;
 

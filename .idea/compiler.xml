@@ -6,13 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="agenda" />
+        <module name="agenda-cli" />
+        <module name="agenda-thrift" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="agenda" options="-parameters" />
+      <module name="agenda" options="" />
+      <module name="agenda-cli" options="-parameters" />
+      <module name="agenda-thrift" options="-parameters" />
     </option>
   </component>
 </project>
