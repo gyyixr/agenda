@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class AbstractCommand implements Command {
+public abstract class AbstractCommand implements Command {
 
     protected String name;
     protected String[] args;
@@ -17,8 +17,6 @@ public class AbstractCommand implements Command {
     private boolean subcmd = false;
 
     private List<Command> cmds = new ArrayList<Command>();
-
-    protected void defineOpts(){};
 
     protected void parser() {
         if (args.length > 0) {
@@ -49,10 +47,15 @@ public class AbstractCommand implements Command {
         };
     }
 
-    protected void doing() {
-        System.out.println("TODO: your command code;");
-        System.exit(1);
-    }
+    /**
+     * 执行命令
+     */
+    protected abstract void doing();
+
+    /**
+     * 定义命令
+     */
+    protected abstract void defineOpts();
 
     @Override
     public void execute() {

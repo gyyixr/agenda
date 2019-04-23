@@ -1,8 +1,11 @@
-package agenda.common.command;
+package agenda.common.command.sub;
 
 
+import agenda.common.annotations.SubCommand;
+import agenda.common.command.AbstractCommand;
 import agenda.common.service.UserSerivce;
 
+@SubCommand
 public class  AddUserCMD extends AbstractCommand {
 
     public AddUserCMD() {

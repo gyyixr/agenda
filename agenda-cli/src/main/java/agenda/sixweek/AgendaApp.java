@@ -1,8 +1,9 @@
 package agenda.sixweek;
 
-import agenda.common.command.AddUserCMD;
+import agenda.common.command.sub.AddUserCMD;
 import agenda.common.command.Command;
-import agenda.common.command.ListUserCMD;
+import agenda.common.command.sub.CommandLoader;
+import agenda.common.command.sub.ListUserCMD;
 import agenda.common.command.RootCMD;
 
 public class AgendaApp {
@@ -16,13 +17,7 @@ public class AgendaApp {
         Command root = new RootCMD();
         root.setArgs(args);
 
-        Command addUserCMD = new AddUserCMD();
-        root.addCommand(addUserCMD);
-
-        Command listUserCMD = new ListUserCMD();
-        root.addCommand(listUserCMD);
-
+        CommandLoader.load(root);
         root.execute();
-        //System.out.println("hello!");
     }
 }

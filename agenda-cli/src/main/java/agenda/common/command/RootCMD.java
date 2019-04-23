@@ -9,11 +9,12 @@ public class RootCMD extends AbstractCommand {
     @Override
     protected void defineOpts(){
         opts.addOption("h", false, "HELP_DESCRIPTION");
-        System.out.println("RootCMD Add OVER");
     }
 
     @Override
     protected void doing() {
-        System.out.println("Doing RootCMD!");
+        System.out.println("Welcome use Help");
+        System.out.println("add -n [UserName] -m [UserMail]");
+        System.out.println("list [-d][detail]");
     }
 }

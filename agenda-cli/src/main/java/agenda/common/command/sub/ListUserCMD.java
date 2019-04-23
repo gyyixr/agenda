@@ -1,6 +1,9 @@
-package agenda.common.command;
+package agenda.common.command.sub;
 
+import agenda.common.annotations.SubCommand;
+import agenda.common.command.AbstractCommand;
 
+@SubCommand
 public class ListUserCMD extends AbstractCommand {
 
     public ListUserCMD() {
@@ -17,7 +20,4 @@ public class ListUserCMD extends AbstractCommand {
         //TODO 执行
 
     }
-
-
-
 }
