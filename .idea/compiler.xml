@@ -7,14 +7,21 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="agenda-cli" />
+        <module name="agenda-jpa" />
         <module name="agenda-thrift" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="agenda" target="1.8" />
+      <module name="agenda-cli" target="1.8" />
+      <module name="agenda-jpa" target="1.8" />
+      <module name="agenda-thrift" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="agenda" options="" />
       <module name="agenda-cli" options="-parameters" />
+      <module name="agenda-jpa" options="-parameters" />
       <module name="agenda-thrift" options="-parameters" />
     </option>
   </component>
