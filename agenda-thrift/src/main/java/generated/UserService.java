@@ -62,6 +62,7 @@ public class UserService {
     {
       send_registe();
       recv_registe();
+
     }
 
     public void send_registe() throws org.apache.thrift.TException
