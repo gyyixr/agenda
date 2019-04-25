@@ -1,16 +1,19 @@
 package server;
 
+import client.ThriftClient;
 import generated.DataException;
 import generated.User;
 import generated.UserService;
 import org.apache.thrift.TException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class UserServiceImpl implements UserService.Iface {
-
+    private final static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     @Override
 
     public void registe() throws DataException, TException {
@@ -31,7 +34,7 @@ public class UserServiceImpl implements UserService.Iface {
         System.out.println("请输入手机号码：");
         user.setPhone(scan.nextLong()) ;
         userList.add(user);
-        System.out.println("注册成功");
+        logger.info(user.getUserName()+"注册成功");
     }
 
     @Override
@@ -56,7 +59,6 @@ public class UserServiceImpl implements UserService.Iface {
                 User user = userList.get(i);
                 if(user.getPassWord().equals(passWord)){
                     userList.get(i).setIsLogin(true);
-                    System.out.println("登录成功");
                 }
                 else{
                     System.out.println("密码错误，登录失败");
@@ -66,9 +68,7 @@ public class UserServiceImpl implements UserService.Iface {
 
 
         }
-
-
-
+        logger.info(userName+"登录成功");
     }
 
     @Override
@@ -76,9 +76,7 @@ public class UserServiceImpl implements UserService.Iface {
         isLogin = false;
         User user = getUserByUserName(userName);
         user.setIsLogin(isLogin);
-        System.out.println("已登出");
-
-
+        logger.info(userName+"已登出");
     }
 
     @Override
@@ -96,7 +94,7 @@ public class UserServiceImpl implements UserService.Iface {
         User user = getUserByUserName(userName);
         user.setIsLogin(false);
         userList.remove(user);
-        System.out.println("已删除该用户");
+        logger.info("已删除用户:"+userName);
     }
     public static List<User> userList = new ArrayList<>();
 
