@@ -19,7 +19,7 @@ public class RemoveUserCMD extends AbstractCommand {
 
     @Override
     protected void doing(){
-        // 执行
-        System.out.println("OK,the User had removed");
+        UserSerivce userSerivce = new UserSerivce();
+        userSerivce.deleteUser(args[1]);
     }
 }

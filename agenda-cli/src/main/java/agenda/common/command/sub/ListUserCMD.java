@@ -2,6 +2,7 @@ package agenda.common.command.sub;
 
 import agenda.common.annotations.SubCommand;
 import agenda.common.command.AbstractCommand;
+import agenda.common.service.UserSerivce;
 
 @SubCommand
 public class ListUserCMD extends AbstractCommand {
@@ -11,13 +12,16 @@ public class ListUserCMD extends AbstractCommand {
     }
 
     @Override
-    protected void defineOpts(){
-        opts.addOption("d",true,"Detail");
-    };
+    protected void defineOpts() {
+    }
+
+    ;
 
     @Override
-    protected void doing(){
+    protected void doing() {
         //TODO 执行
-
+        UserSerivce userSerivce = new UserSerivce();
+        userSerivce.listUser();
+        ;
     }
 }

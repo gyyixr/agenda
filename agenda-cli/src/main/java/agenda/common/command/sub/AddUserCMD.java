@@ -15,7 +15,7 @@ public class  AddUserCMD extends AbstractCommand {
     @Override
     protected void defineOpts(){
         opts.addOption("n",true,"Name");
-        opts.addOption("m",true,"Mail");
+        opts.addOption("p",true,"Password");
     };
 
     @Override

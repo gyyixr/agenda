@@ -23,15 +23,15 @@ public class UserServiceImpl implements UserService.Iface {
         user.setUserName(scan.nextLine());
         for(int i=0;i<userList.size();i++){
             if(user.userName.equals(userList.get(i).getUserName())){
-                System.out.println("改用户名已被注册，请重新注册");
+                logger.info("改用户名已被注册，请重新注册");
             }
         }
 
-        System.out.println("请输入密码：");
+        logger.info("请输入密码：");
         user.setPassWord(scan.nextLine()) ;
-        System.out.println("请输入邮箱：");
+        logger.info("请输入邮箱：");
         user.setMail(scan.nextLine()) ;
-        System.out.println("请输入手机号码：");
+        logger.info("请输入手机号码：");
         user.setPhone(scan.nextLong()) ;
         userList.add(user);
         logger.info(user.getUserName()+"注册成功");
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService.Iface {
                 passWord = scan.nextLine();
                 break a;
             }
-            System.out.println( "该用户名暂未注册");
+            logger.info( "该用户名暂未注册");
 
         }
 
@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService.Iface {
                     userList.get(i).setIsLogin(true);
                 }
                 else{
-                    System.out.println("密码错误，登录失败");
+                    logger.info("密码错误，登录失败");
                 }
             }
             break;
@@ -82,10 +82,10 @@ public class UserServiceImpl implements UserService.Iface {
     @Override
     public void check(String userName) throws TException {
         User user = getUserByUserName(userName);
-        System.out.println("用户名:"+user.getUserName());
-        System.out.println("邮箱:"+user.getMail());
-        System.out.println("手机号码:"+user.getPhone());
-        System.out.println("登录状态:"+true);
+        logger.info("用户名:"+user.getUserName());
+        logger.info("邮箱:"+user.getMail());
+        logger.info("手机号码:"+user.getPhone());
+        logger.info("登录状态:"+true);
 
     }
 
