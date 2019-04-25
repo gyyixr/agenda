@@ -4,6 +4,8 @@ import generated.DataException;
 import generated.User;
 import generated.UserService;
 import org.apache.thrift.TException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 import java.util.ArrayList;
@@ -11,13 +13,14 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UserServiceImpl implements UserService.Iface {
+    private final static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     public static List<User> userList = new ArrayList<>();
 
     //用户注册
     @Override
     public void registe() throws DataException, TException {
 //        boolean Exist = false;
-        System.out.println("11111111");
+        logger.info("用户已注册");
 //        while (true){
 //            System.out.println("请输入用户名：");
 //            User user =new User();
@@ -48,6 +51,7 @@ public class UserServiceImpl implements UserService.Iface {
     //用户登录
     @Override
     public void  login() throws TException {
+        logger.info("用户登录");
 //        String userName = "";
 //        String passWord = "";
 //        System.out.println("请输入用户名：");
@@ -81,6 +85,7 @@ public class UserServiceImpl implements UserService.Iface {
     //用户登出
     @Override
     public void logout(String userName, boolean isLogin) throws TException {
+        logger.info("用户:"+userName+"已登出");
 //        isLogin = false;
 //        User user = getUserByUserName(userName);
 //        user.setIsLogin(isLogin);
@@ -100,6 +105,7 @@ public class UserServiceImpl implements UserService.Iface {
     //用户删除
     @Override
     public void deleteUser(String userName) throws TException {
+        logger.info("用户已删除");
 //        User user = getUserByUserName(userName);
 //        user.setIsLogin(false);
 //        userList.remove(user);

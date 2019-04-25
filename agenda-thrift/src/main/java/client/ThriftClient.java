@@ -8,8 +8,6 @@ import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
-import org.omg.CORBA.TIMEOUT;
-
 
 import java.util.*;
 
@@ -25,11 +23,15 @@ public class ThriftClient {
     public static final int SERVER_PORT = 8090;
     public static final int TIMEOUT = 30000;
     boolean isOut = false;
-    TTransport tTransport = new TSocket(SERVER_IP, SERVER_PORT,TIMEOUT);
+    TTransport tTransport = new TSocket("localhost",8090,30000);
     TProtocol protocol = new TBinaryProtocol(tTransport);
     UserService.Client client = new UserService.Client(protocol);
-    public  void  startClient() throws TException {
 
+    public  void  startClient() throws TException {
+//        TTransport tTransport = null;
+//        tTransport = new TSocket(SERVER_IP, SERVER_PORT, TIMEOUT);
+//        TProtocol protocol = new TBinaryProtocol(tTransport);
+//        UserService.Client client = new UserService.Client(protocol);
         tTransport.open();
         TTransport finalTTransport = tTransport;
 //        boolean isOut = false;
@@ -57,7 +59,7 @@ public class ThriftClient {
 
             //注册
             if (ini.equals(1)) {
-//               client.registe();
+                client.registe();
                 boolean Exist = false;
 
                 while (!Exist){
@@ -88,7 +90,7 @@ public class ThriftClient {
                         }
                     }
 //                    System.out.println("++++");
-                    if (Exist == true) { break;}
+                    if (Exist == true)  {break;}
                 }
                 continue;
 
@@ -113,6 +115,7 @@ public class ThriftClient {
                         if(user.getPassWord().equals(passWord)){
                             userList.get(i).setIsLogin(true);
                             System.out.println("登录成功");
+                            client.login();
                             currentName = userList.get(i).getUserName();
                             break a;
                         }
@@ -144,6 +147,7 @@ public class ThriftClient {
             //登出
             else if (ini.equals(0)){
                 System.out.println("再见！");
+                //client.recv_logout();
                 isOut = true;
                 break;
             }
@@ -346,24 +350,29 @@ public class ThriftClient {
     }
 
     //登出功能
-    public void userLogout(){
+    public void userLogout() throws TException {
 //        User user = new User("asd","111","111",111,true);
         User user = getUserByUserName(currentName);
-//        user.setIsLogin(false);
+        user.setIsLogin(false);
         System.out.println(currentName + "，您已成功登出系统");
+        client.logout(user.getUserName(),false);
     }
 
     //删除功能
     public void userDelete(){
-//        System.out.println("请输入您要删除的用户名");
-//        Scanner scanner = new Scanner(System.in);
-//        String name = scanner,string;
-//        Scanner scan = new Scanner(System.in);
-//        String name = scan.nextLine();
-        User user = getUserByUserName(currentName);
-//        user.setIsLogin(false);
+        System.out.println("请输入您要删除的用户名");
+        Scanner scan = new Scanner(System.in);
+        String name = scan.nextLine();
+        User user = new User("af","adf","Adf",111,true);
+        for (int i = 0 ; i < userList.size(); i++){
+            if (name.equals(userList.get(i).getUserName())){
+                user = userList.get(i);
+            }
+        }
+        
+        user.setIsLogin(false);
         userList.remove(user);
-        System.out.println(currentName + "，您的账户已被注销");
+        System.out.println(name + "的账户已被注销");
     }
 
 
