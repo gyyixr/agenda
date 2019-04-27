@@ -6,11 +6,9 @@ import generated.UserService;
 import org.apache.thrift.TException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
 
 public class UserServiceImpl implements UserService.Iface {
     private final static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
