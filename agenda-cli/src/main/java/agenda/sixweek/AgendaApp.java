@@ -16,7 +16,6 @@ public class AgendaApp {
 
         Command root = new RootCMD();
         root.setArgs(args);
-
         CommandLoader.load(root);
         root.execute();
     }
